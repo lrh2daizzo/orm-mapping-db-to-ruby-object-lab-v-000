@@ -29,11 +29,11 @@ class Student
   end
 
   def self.new_from_db(row)
-    Student.new(row).tap {|student|
+    Student.new.tap {|student|
       student.id = row[0]
       student.name = row[1]
       student.grade = row[2]
     }
   end
-  
+
 end
