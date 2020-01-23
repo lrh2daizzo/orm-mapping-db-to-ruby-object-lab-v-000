@@ -36,4 +36,23 @@ class Student
     }
   end
 
+  def self.all
+    sql = <<-SQL
+      SELECT *
+      FROM students;
+    SQL
+
+    DB[:conn].execute(sql).map { |row| self.new_from_db(row) }
+    binding.pry
+  end
+
+  def self.find_by_name(name)
+    sql = <<-SQL
+      SELECT *
+      FROM students
+      WHERE name = ?
+      LIMIT 1;
+    SQL
+
+    DB[:conn].execute(sql, name)
 end
