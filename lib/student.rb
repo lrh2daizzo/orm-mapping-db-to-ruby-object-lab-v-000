@@ -1,6 +1,8 @@
 require 'pry'
 class Student
-  attr_accessor :id, :name, :grade
+  attr_accessor :name, :grade
+  attr_reader :id
+  
   def save
     sql = <<-SQL
       INSERT INTO students (name, grade)
